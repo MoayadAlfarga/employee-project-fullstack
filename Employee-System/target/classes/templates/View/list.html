@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!--    <title>Employee System</title>-->
+</head>
+<!--<h3 style="text-align:center;color:black">Employee Dashboard</h3>-->
+<div class="container">
+
+    <h3 style="text-align:center;color:black">Employee Dashboard</h3>
+    <hr>
+
+    <a th:href="@{/Employees/Show}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+
+    <div class="row">
+        <div th:each="tempEmployee : ${Employees}" class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${tempEmployee.firstName + ' ' + tempEmployee.lastName}"></h5>
+                    <p class="card-text" th:text="'Educational Specialization: ' + ${tempEmployee.educationalSpecialization}"></p>
+                    <p class="card-text" th:text="'Higher Education: ' + ${tempEmployee.HigherEducation}"></p>
+                    <p class="card-text" th:text="'Home Address: ' + ${tempEmployee.homeAddress}"></p>
+                    <p class="card-text" th:text="'Email: ' + ${tempEmployee.email}"></p>
+                    <p class="card-text" th:text="'Phone Number: ' + ${tempEmployee.phoneNumber}"></p>
+                    <p class="card-text" th:text="'National Number: ' + ${tempEmployee.nationalNumber}"></p>
+                    <p class="card-text" th:text="'Date of Birth: ' + ${tempEmployee.dateOfBirth}"></p>
+                    <p class="card-text" th:text="'Date of Employment: ' + ${tempEmployee.dateOfEmployment}"></p>
+                    <p class="card-text" th:text="'Job Title: ' + ${tempEmployee.jopTitle}"></p>
+                    <a th:href="@{/Employees/ShowUpdate(employeeId=${tempEmployee.id})}" class="btn btn-info btn-sm">Update</a>
+                    <a th:href="@{/Employees/delete(employeeId=${tempEmployee.id})}" class="btn btn-danger btn-sm"
+                       onclick="if(!(confirm('Are you sure you want to delete this Book?'))) return false">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
